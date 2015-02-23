@@ -8,10 +8,16 @@
   <script src="js/controllers.js"></script>
 </head>
 <body ng-controller="AlunosCtrl">
-	<div>
+	<div style="border-style: solid; border-color: black;">
 	    <form ng-submit="addRowAsyncAsJSON()">
 			<input type="text"  name="nome" ng-model="nome" />
 			<input type="text" name="contato" ng-model="contato" />
+			<input type="submit" value="Submit"/>
+		</form>
+	</div>
+	<div style="border-style: solid; border-color: black;">
+	    <form ng-submit="deleteRowAsyncAsJSON()">
+			<input type="text"  name="ra" ng-model="ra" />
 			<input type="submit" value="Submit"/>
 		</form>
 	</div>
