@@ -1,0 +1,40 @@
+<html ng-app="alunosApp">
+<head>
+  <meta charset="utf-8">
+  <title>My HTML File</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="css/app.css">
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="js/controllers.js"></script>
+</head>
+<body ng-controller="AlunosCtrl">
+	<div>
+	    <form ng-submit="addRowAsyncAsJSON()">
+			<input type="text"  name="nome" ng-model="nome" />
+			<input type="text" name="contato" ng-model="contato" />
+			<input type="submit" value="Submit"/>
+		</form>
+	</div>
+		<div class="container-fluid">
+		  <div class="row">
+		    <div class="col-md-2">
+		      Search: <input ng-model="query">
+				Sort by:
+				<select ng-model="orderProp">
+				  <option value="nome">Alfabetico</option>
+				  <option value="contato">contato</option>
+				</select>
+		    </div>
+		    <div class="col-md-10">	
+				<ul>
+					<li ng-repeat="aluno in alunos | filter:query | orderBy:orderProp">
+						<span>{{aluno.nome}}</span>
+						<p>{{aluno.contato}}</p>
+						<p>{{aluno.ra}}</p>
+					</li>
+				</ul>
+			</div>
+		  </div>
+		</div>
+</body>
+</html>
