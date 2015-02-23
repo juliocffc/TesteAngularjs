@@ -8,15 +8,20 @@ alunosApp.controller('AlunosCtrl',['$scope', '$http',
 	    $scope.alunos = data;
 	  });
 	  $scope.orderProp = 'contato';
+
+	  
 	$scope.addRowAsyncAsJSON = function(){		
-		//$scope.alunos.push({ 'nome':$scope.nome, 'contato': $scope.contato});
 		var dataObj = {
 				nome : $scope.nome,
 				contato : $scope.contato
 		};	
 		var res = $http.post('http://localhost:8090/teste/aluno', dataObj);
 		res.success(function(data) {
-			scope.alunos.push(data);
+			var rel = $http.get('http://localhost:8090/teste/aluno');
+			rel.success(function(datax) {
+	    		$scope.alunos = datax;
+	  		});
+
 		});
 		res.error(function(data) {
 			alert( "failure message: " + JSON.stringify({data: data}));
@@ -29,13 +34,17 @@ alunosApp.controller('AlunosCtrl',['$scope', '$http',
 	
 		var res = $http.delete('http://localhost:8090/teste/aluno/'+$scope.ra);
 		res.success(function(data) {
-			scope.alunos.push(data);
+			var rel = $http.get('http://localhost:8090/teste/aluno');
+			rel.success(function(datay) {
+	    		$scope.alunos = datay;
+	  		});
 		});
 		res.error(function(data) {
 			alert( "failure message: " + JSON.stringify({data: data}));
 		});		
-		$scope.nome='';
-		$scope.contato='';
+		$scope.ra='';
+
+
 	};
 }]);
 
