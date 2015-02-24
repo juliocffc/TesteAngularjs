@@ -11,63 +11,98 @@
   <script src="tcangular/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </head>
 <body ng-controller="AlunosCtrl">
-	<div class="panel panel-default">
+	<div class="panel panel-primary" align="center">
 		<div class="panel-heading">
-		  Manter Alunos
+		  Controle de Alunos
 		</div>
-		<div class="panel-body">
-			<div class="container-fluid">
-				<div class="row">
-				    <div class="col-md-2">
-					    <form ng-submit="addRowAsyncAsJSON()" role="form">
-					    	<div>Inserir Registro:</div>
-					    	<label for="nome">Nome:</label>
-							<input type="text"  name="nome" ng-model="nome"class="form-control" placeholder="Digite o Nome" />
-							<label for="contato">Contato:</label>
-							<input type="text" name="contato" ng-model="contato" class="form-control" placeholder="Digite o Contato"/>
-							<button type="submit" class="btn btn-default" >Salvar</button>
-						</form>
-					</div>
-				    <div class="col-md-2">
-					    <form ng-submit="deleteRowAsyncAsJSON()" role="form">
-					    	<div>Deletar Registro:</div>
-					    	<label for="ra">RA:</label>
-							<input type="text" size="5" name="ra" ng-model="ra" class="form-control" placeholder="Digite o RA"/>
-							<button type="submit" class="btn btn-default" >Deletar</button>
-						</form>
-					</div>
-				</div>
-			</div>	
-		</div>
-	</div>
-	<div class="panel panel-default">
-		<div class="panel-heading">
-		   Pesquisar Alunos
-		</div>
-		<div class="panel-body">
+		<div><br/></div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+			  Manter Alunos
+			</div>
+			
+			<div class="panel-body">
 				<div class="container-fluid">
-			  <div class="row">
-			    <div class="col-md-2">
-			      <label>Procurar:</label><input ng-model="query" class="form-control" />
-					<label>Ordenado por:</label>
-					<select ng-model="orderProp" class="form-control">
-					  <option value="nome">Nome</option>
-					  <option value="contato">Contato</option>
-					  <option value="ra">RA</option>
-					</select>
-			    </div>
-			    <div class="col-md-10">	
-					<ul>
-						<li ng-repeat="aluno in alunos | filter:query | orderBy:orderProp">
-							<span>{{aluno.nome}}</span>
-							<p>{{aluno.contato}}</p>
-							<p>{{aluno.ra}}</p>
-						</li>
-					</ul>
+					<div class="row">
+					    <div class="col-md-3">
+					    	<div class="panel panel-info">
+								<div class="panel-heading">
+									Inserir Registro:
+								</div>
+							    <form ng-submit="addRowAsyncAsJSON()" role="form">
+							    	<label for="nome">Nome:</label>
+									<input type="text"  name="nome" ng-model="nome"class="form-control" placeholder="Digite o Nome" />
+									<label for="contato">Contato:</label>
+									<input type="text" name="contato" ng-model="contato" class="form-control" placeholder="Digite o Contato"/>
+									<button type="submit" class="btn btn-default" >Salvar</button>
+								</form>
+							</div>
+						</div>	
+					    <div class="col-md-2">
+					    	<div class="panel panel-info">
+								<div class="panel-heading">
+									Deletar Registro:
+								</div>
+							    <form ng-submit="deleteRowAsyncAsJSON()" role="form">
+							    	<label for="ra">RA:</label>
+									<input type="text" size="5" name="ra" ng-model="ra" class="form-control" placeholder="Digite o RA"/>
+									<button type="submit" class="btn btn-default" >Deletar</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>	
+			</div>
+			
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+			   Pesquisar Alunos
+			</div>
+			<div class="panel-body">
+					<div class="container-fluid">
+				  <div class="row">
+				    <div class="col-md-2">
+				      <label>Procurar:</label><input ng-model="query" class="form-control" />
+						<label>Ordenado por:</label>
+						<select ng-model="orderProp" class="form-control">
+						  <option value="nome">Nome</option>
+						  <option value="contato">Contato</option>
+						  <option value="ra">RA</option>
+						</select>
+				    </div>
+				    <div class="col-md-10">	
+				    	<form role="form">
+				    		<div class = "row">
+								<div class ="col-md-2">
+									<label for="ra">RA:</label>
+								</div>
+								<div class ="col-md-2">
+									<label for="ra">Nome:</label>
+								</div>
+								<div class ="col-md-2">
+									<label for="ra">Contato:</label>
+								</div>
+							</div>
+							<div ng-repeat="aluno in alunos | filter:query | orderBy:orderProp">
+								<div class = "row">
+									<div class ="col-md-2">
+										<input type="text" class="form-control" value={{aluno.ra}} disabled />
+									</div>
+									<div class ="col-md-2">
+										<input type="text" class="form-control" value={{aluno.nome}} disabled />
+									</div>
+									<div class ="col-md-2">
+										<input type="text" class="form-control" value={{aluno.contato}} disabled />
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				  </div>
 				</div>
-			  </div>
 			</div>
 		</div>
-	</div>
+	</div>	
 </body>
 </html>
