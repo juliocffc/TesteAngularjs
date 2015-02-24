@@ -50,6 +50,22 @@
 								</form>
 							</div>
 						</div>
+					    <div class="col-md-3">
+					    	<div class="panel panel-info">
+								<div class="panel-heading">
+									Editar Registro:
+								</div>
+							    <form ng-submit="editRowAsyncAsJSON()" role="form">
+							    	<label for="nome">RA:</label>
+									<input type="text"  name="rae" ng-model="rae"class="form-control" disabled />
+							    	<label for="nome">Nome:</label>
+									<input type="text"  name="nomee" ng-model="nomee"class="form-control" />
+									<label for="contato">Contato:</label>
+									<input type="text" name="contatoe" ng-model="contatoe" class="form-control" />
+									<button type="submit" class="btn btn-default" >Salvar</button>
+								</form>
+							</div>
+						</div>	
 					</div>
 				</div>	
 			</div>
@@ -85,17 +101,22 @@
 								</div>
 							</div>
 							<div ng-repeat="aluno in alunos | filter:query | orderBy:orderProp">
+								<form role="form">
 								<div class = "row">
 									<div class ="col-md-2">
-										<input type="text" class="form-control" value={{aluno.ra}} disabled />
+										<input type="text" id="1" class="form-control" value={{aluno.ra}} disabled />
 									</div>
 									<div class ="col-md-2">
-										<input type="text" class="form-control" value={{aluno.nome}} disabled />
+										<input type="text" id="2"class="form-control" value={{aluno.nome}} disabled />
 									</div>
 									<div class ="col-md-2">
-										<input type="text" class="form-control" value={{aluno.contato}} disabled />
+										<input type="text" id="3"class="form-control" value={{aluno.contato}} disabled />
+									</div>
+									<div class ="col-md-2">
+										<button class="btn btn-default" ng-click="teste()" >Editar</button>
 									</div>
 								</div>
+								</form>
 							</div>
 						</form>
 					</div>

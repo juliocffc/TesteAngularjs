@@ -43,9 +43,16 @@ alunosApp.controller('AlunosCtrl',['$scope', '$http',
 			alert( "failure message: " + JSON.stringify({data: data}));
 		});		
 		$scope.ra='';
-
+	};
+	$scope.teste = function(){		
+		alert(document.getElementById("1").value);
+		$scope.rae=document.getElementById("1").value
+		$scope.nomee=document.getElementById("2").value
+		$scope.contatoe=document.getElementById("3").value
 
 	};
+
+
 }]);
 
 
